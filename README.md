@@ -1,4 +1,4 @@
-# TantasticOfficeHours
+# Tantastic Office Hours
 
 This repo contains code from various office-hours/R4DS help that I give and want to archive.
 
