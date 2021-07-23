@@ -6,6 +6,10 @@ Tan Ho
 So last night on [Nick Wan’s stream](https://twitch.tv/nickwan_datasci)
 I got drawn into a quick “recreate-this-viz” challenge…
 
+![](https://pbs.twimg.com/media/E69AzXIXIAAPLp0?format=png&name=900x900)
+
+goal viz - US map of 2016 election results
+
 [VOD here](https://www.twitch.tv/videos/1095134933), challenge starts
 around 2h15m in.
 
