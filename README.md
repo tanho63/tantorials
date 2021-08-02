@@ -13,7 +13,7 @@ This repo contains code from various office-hours/R4DS help that I give and want
     - Code/notes: https://github.com/tanho63/office_hours/blob/main/20210722-viz_challenge/viz-usmap.md
     
 - 2021-08-02: Wrangling JSON
-    - Outline:
+    - Outline: https://github.com/tanho63/office_hours/tree/main/20210802-json_wrangling
     - Other great resources: 
         - Thomas Mock has a few articles! 
             - https://themockup.blog/posts/2020-05-22-parsing-json-in-r-with-jsonlite/
