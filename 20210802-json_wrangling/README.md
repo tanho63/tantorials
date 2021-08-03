@@ -3,15 +3,15 @@
 ## Main packages used:
 
 - jsonlite - read_json, parse_json etc
-- tidyr - 
+- tidyr - unnest, unnest_wider, unnest_longer, hoist
+- purrr - map, map_dbl, map_chr etc
 - dplyr
-- purrr
 
 ## Examples to cover:
 
-- Marine mammals! https://github.com/kierisi/marinemammalrescue/tree/main/data-raw
-- Eric's OBS JSON! https://github.com/rpodcast/r_media_prod/issues/1
-- Sportradar NFL participation data! https://gist.github.com/tanho63/64b9405df69701311f608c174493f8b5
+- Marine mammals! ✅ https://github.com/kierisi/marinemammalrescue/tree/main/data-raw 
+- Eric's OBS JSON! ✅ https://github.com/rpodcast/r_media_prod/issues/1 
+- Sportradar NFL participation data! ✅ https://gist.github.com/tanho63/64b9405df69701311f608c174493f8b5
 - Sleeper API! 
 - MyFantasyLeague.com API: 
 - ESPN API: http://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401220303
