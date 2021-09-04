@@ -19,6 +19,12 @@ You can find office hours replays on my YouTube channel here: https://youtube.co
 - 2021-08-02: Wrangling JSON
     - Outline: https://github.com/tanho63/office_hours/tree/main/20210802-json_wrangling
     - Other great resources: 
-        - Thomas Mock has a few articles! 
+        - Thomas Mock has a few great articles! 
             - https://themockup.blog/posts/2020-05-22-parsing-json-in-r-with-jsonlite/
             - https://themockup.blog/posts/2020-12-13-extracting-json-from-websites-and-public-apis-with-r/
+
+Ideas I'm mulling over and should be able to get to soonish:
+
+- Automating R scripts with GitHub Actions
+- Packaging apps with Dockerfiles
+- Setting up a Shiny Server from scratch on Linux
