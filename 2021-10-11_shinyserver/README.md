@@ -17,6 +17,7 @@ Coding
 - Install R, Shiny, and RStudio on server
 - Deploy app on server (w/ git + config management)
 - Set up Nginx and HTTPS
+- Install RStudio Server
 
 ### Previous work and other resources
 
