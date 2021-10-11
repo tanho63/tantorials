@@ -23,8 +23,11 @@ You can find office hours replays on my YouTube channel here: https://youtube.co
             - https://themockup.blog/posts/2020-05-22-parsing-json-in-r-with-jsonlite/
             - https://themockup.blog/posts/2020-12-13-extracting-json-from-websites-and-public-apis-with-r/
 
+- 2021-10-11: Shiny Server
+    - Notes:  https://github.com/tanho63/office_hours/tree/main/20211011-shinyserver
+
+
 Ideas I'm mulling over and should be able to get to soonish:
 
 - Automating R scripts with GitHub Actions
 - Packaging apps with Dockerfiles
-- Setting up a Shiny Server from scratch on Linux
