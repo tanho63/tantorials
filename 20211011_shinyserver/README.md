@@ -5,15 +5,17 @@ The goal of this tutorial/office hours is to demonstrate following the basic ste
 Preamble/background talk
 
 - Talk briefly about pros and cons of Shiny Server vs shinyapps.io, compare with RS Cloud + rsconnect
-- Briefly list common cloud providers (AWS, DigitalOcean, Linode, Google Cloud Platform, Azure) and pick out the ones that have nice free tier credits
+- Briefly list common cloud providers (AWS, Google Cloud Platform, Azure, DigitalOcean, Linode) and pick out the ones that have nice free tier credits
     - Also sign up for [GitHub Student Dev](https://education.github.com/pack?sort=popularity&tag=All) program if you are eligible 
 
 Coding
 - Pick an app or two to put onto this server
 - Talk about domains and DNS, review the basic parts of the Hover.com site and control panel
 - Set up AWS account (because free tier)
+- Pick out a new VM and use it
 - Set up a new non-root user
 - Set up SSH + key/pair, AWS firewall
+- fail2ban
 - Install R, Shiny, and RStudio on server
 - Deploy app on server (w/ git + config management)
 - Set up Nginx and HTTPS
