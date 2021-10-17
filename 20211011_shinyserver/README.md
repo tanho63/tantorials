@@ -9,21 +9,125 @@ Preamble/background talk
 - Briefly list common cloud providers (AWS, Google Cloud Platform, Azure, DigitalOcean, Linode) and pick out the ones that have nice free tier credits
     - Also sign up for [GitHub Student Dev](https://education.github.com/pack?sort=popularity&tag=All) program if you are eligible
 
-Coding
+Coding Outline and Notes
 - Pick an app or two to put onto this server
-    - https://github.com/dynastyprocess/apps-potentialpoints 
-- Talk about domains and DNS, review the basic parts of the Hover.com site and control panel
+    - We'll use https://github.com/dynastyprocess/apps-potentialpoints 
+- Buy a domain
+    - https://tan.fyi
 - Set up AWS account (because free tier is nice)
 - Pick out a new VM and use it
+    - AWS t2.micro with Ubuntu 20.04 (free tier + current long-term-stable Ubuntu version) 
+    - In general I just recommend using Ubuntu everywhere, there are reasons to choose other ones but they're mostly irrelevant to new devops people
 - Set up SSH + key/pair, AWS firewall
-- Set up a new non-root user
-- Talk about other Linux security - e.g. fail2ban, firewalls, etc
-- If free tier, add swap space
-- Install R, Shiny, and RStudio on server
-- Deploy app on server (w/ git + config management)
-- Install RStudio Server, for remote development
-- Set up Nginx and HTTPS
+    - On Windows, this involves configuring Putty
+    - AWS comes with a web-based firewall, I like to configure it so that only my IP can access the box via SSH
+    - Azure and GCP also have web-based firewalls, Digital Ocean and Linode I'm unfamiliar with (they may not)
+- Access the VM with SSH
+- Helpful Linux shell commands and keyboard shortcuts
+    -  `Ctrl-C` does *not* copy - it runs a "kill currently running command" operation
+    -  `Ctrl-Ins` is copy
+    -  `Shift-Ins` is paste
+    -  `.` refers to the current working directory
+    -  `cd` is change directory - when run without an argument it takes you to your home directory (`/home/tan` etc)
+    -  `ls` is "list files" - I like `ls -al` which lists all files in a vertical list
+    -  `ln -s` is "create symbolic link" - this command creates references between one folder/file location to another, and allows the system to treat the file as if it existed in the new location
 
+- Set up a new non-root user
+    -  `sudo adduser tan` add a new user named tan (also configure password)
+    -  `sudo gpasswd -a tan sudo` (make this user have sudo permissions)
+    -  `sudo su tan` switch user to `tan`
+
+- Add other Linux security (optional/recommended)
+    - fail2ban is an easy one (not covered in video) `sudo apt install fail2ban` 
+
+- Add swap space (virtual memory) <- ***especially important if you're on a free tier VM - your R packages will not install otherwise***
+    - here, 2GB of swap 
+    ```
+    sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=2048 
+    sudo /sbin/mkswap /var/swap.1`
+    sudo /sbin/swapon /var/swap.1`
+    sudo sh -c 'echo "/var/swap.1 swap swap defaults 0 0 " >> /etc/fstab'`
+    ```
+    
+- Install R
+    - https://cran.rstudio.com/bin/linux/ubuntu/ are the official instructions for installing R - relevant parts snipped here:
+    ```
+    apt update -qq
+    apt install --no-install-recommends software-properties-common dirmngr
+    wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+    add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+    apt install --no-install-recommends r-base r-base-dev
+    ```
+    - r-base-dev is important, don't skip it!
+- Install R packages
+    - There is a difference between your personal package library and the library that Shiny will have access to. It's important to always install packages into the root user's library!
+    - I like pak (pak pak pak pak) https://drive.google.com/file/d/10ekbUxKsKmEPjk0Z6G4BDoPwV4sa8oWG/view?usp=sharing
+    - I didn't do this in the video and regretted it, but you can use RSPM to speed things up https://packagemanager.rstudio.com/client/#/repos/1/overview
+    - If something fails to install, check the requirements with pak::pkg_system_requirements(pkg, execute = TRUE) - hopefully that's the problem with the package!
+    
+    ```
+    sudo R
+    # in R console
+    install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
+    # use RSPM
+    options(repos = c("CRAN" = "https://packagemanager.rstudio.com/all/__linux__/focal/latest"))
+    pkgs <- c("shiny","dplyr","tidyr","rmarkdown","shinyWidgets")
+    lapply(pkgs, function(pkg) {
+      pak::pkg_system_requirements(pkg, execute = TRUE)
+    })
+    pak::pak(pkgs) # hopefully this doesn't take very long!
+    ``
+- Install Shiny Server and RStudio Server
+  - install both as per instructions here https://www.rstudio.com/products/rstudio/download-server/debian-ubuntu/ and https://www.rstudio.com/products/shiny/download-server/ubuntu/
+- Deploy app on server (w/ git + config management)
+    - git clone the repo to your base folder and symlink into /srv/shiny-server 
+- Set up Nginx
+    - `sudo apt install nginx`
+    - Copied from Charles Bordet and Dean Attali's tutorial - the following goes in /etc/nginx/sites-available/shiny.conf
+    ```
+    server {
+    # listen 80 means the Nginx server listens on the 80 port.
+    listen 80;
+    listen [::]:80;
+    # Replace it with your (sub)domain name.
+    server_name shiny.datachamp.fr;
+    # The reverse proxy, keep this unchanged:
+    location / { # for the basic shiny server
+        proxy_pass http://localhost:3838;
+        proxy_redirect http://localhost:3838/ $scheme://$host/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_read_timeout 20d;
+        proxy_buffering off;
+    }
+    location /rstudio/ {
+        proxy_pass http://127.0.0.1:8787/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+     }
+    }
+    ```
+    and this gets added to /etc/nginx/nginx.conf inside of the http block 
+    ```
+    map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+    } 
+    ```
+   - then test nginx `sudo nginx -t` 
+   - and restart nginx to apply changes `sudo systemctl restart nginx`
+- Set up HTTPS with Certbot
+  - As per instructions here: https://certbot.eff.org/
+  ```
+  sudo snap install core; sudo snap refresh core
+  sudo snap install --classic certbot
+  sudo ln -s /snap/bin/certbot /usr/bin/certbot
+  sudo certbot --nginx
+  ```
+
+Poof you now have a shiny app server and a remote R environment. Video forthcoming. 
 
 ### Previous work and other resources
 
