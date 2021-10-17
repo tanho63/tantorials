@@ -1,6 +1,6 @@
 # How to Train Your Shiny Server
 
-The goal of this tutorial/office hours is to demonstrate following the basic steps to installing Shiny Server Open Source directly onto a cloud server. This will generally follow a guide by Charles Bordet which can be found here: https://www.charlesbordet.com/en/guide-shiny-aws/
+The goal of this tutorial/office hours is to demonstrate following the basic steps to installing Shiny Server Open Source directly onto a cloud server. This will generally follow a guide by Charles Bordet with some chunks taken from Dean Attali's guide and from my own experiences. Guides linked below. Highly recommend reading Charles's guide - does a great job explaining mechanics approachably!
 
 Preamble/background talk
 
