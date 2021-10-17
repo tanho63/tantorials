@@ -5,7 +5,7 @@ The goal of this tutorial/office hours is to demonstrate following the basic ste
 Preamble/background talk
 
 - Talk briefly about pros and cons of Shiny Server vs shinyapps.io, compare with RS Cloud + rsconnect
-    - Knowing how to set your own server up is a supplement to 
+    - Knowing how to set your own server up is an important step in your growth as a shiny developer!
 - Briefly list common cloud providers (AWS, Google Cloud Platform, Azure, DigitalOcean, Linode) and pick out the ones that have nice free tier credits
     - Also sign up for [GitHub Student Dev](https://education.github.com/pack?sort=popularity&tag=All) program if you are eligible
 
