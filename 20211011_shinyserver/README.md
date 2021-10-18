@@ -51,9 +51,9 @@ The goal of this tutorial/office hours is to demonstrate following the basic ste
     - here, 2GB of swap 
     ```
     sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=2048 
-    sudo /sbin/mkswap /var/swap.1`
-    sudo /sbin/swapon /var/swap.1`
-    sudo sh -c 'echo "/var/swap.1 swap swap defaults 0 0 " >> /etc/fstab'`
+    sudo /sbin/mkswap /var/swap.1
+    sudo /sbin/swapon /var/swap.1
+    sudo sh -c 'echo "/var/swap.1 swap swap defaults 0 0 " >> /etc/fstab'
     ```
     
 - Install R
@@ -76,13 +76,14 @@ The goal of this tutorial/office hours is to demonstrate following the basic ste
     sudo R
     # in R console
     install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
-    # use RSPM
+    # use RSPM - I forgot to and I think this will make it go faster
     options(repos = c("CRAN" = "https://packagemanager.rstudio.com/all/__linux__/focal/latest"))
     pkgs <- c("shiny","dplyr","tidyr","rmarkdown","shinyWidgets")
     lapply(pkgs, function(pkg) {
       pak::pkg_system_requirements(pkg, execute = TRUE)
     })
     pak::pak(pkgs) # hopefully this doesn't take very long!
+    q() # exit
     ``
 - Install Shiny Server and RStudio Server
   - install both as per instructions here https://www.rstudio.com/products/rstudio/download-server/debian-ubuntu/ and https://www.rstudio.com/products/shiny/download-server/ubuntu/
