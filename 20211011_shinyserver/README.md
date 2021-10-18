@@ -2,7 +2,11 @@
 
 The goal of this tutorial/office hours is to demonstrate following the basic steps to installing Shiny Server Open Source directly onto a cloud server. This will generally follow a guide by Charles Bordet with some chunks taken from Dean Attali's guide and from my own experiences. Guides linked below. Highly recommend reading Charles's guide - does a great job explaining mechanics approachably!
 
-Preamble/background talk
+### Video
+
+- Cleaned up/edited version - https://youtu.be/JL4T0qfqY7k - thank you so much to Alyssa for helping with the editing!
+
+### Preamble/background notes
 
 - Talk briefly about pros and cons of Shiny Server vs shinyapps.io, compare with RS Cloud + rsconnect
     - Knowing how to set your own server up is an important step in your growth as a shiny developer!
@@ -10,7 +14,7 @@ Preamble/background talk
 - Also consider signing up for [GitHub Student Dev](https://education.github.com/pack?sort=popularity&tag=All) program if you are eligible
 - Choice of Linux distro: I just recommend using Ubuntu 20.04 - that's the long-term stable release and ***by far*** the most common distribution, which means it'll be the easiest to get help online with. The performance gains between OSes are marginal compared to just buying more resources for your VM. You may want to upgrade to a newer Ubuntu eventually but it's a bunch of (relatively unnecessary) work. 
 
-Coding Outline and Notes
+### Coding Outline and Notes
 - Pick an app or two to put onto this server
     - We'll use https://github.com/dynastyprocess/apps-potentialpoints 
 - Buy a domain
