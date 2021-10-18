@@ -33,9 +33,11 @@ The goal of this tutorial/office hours is to demonstrate following the basic ste
     -  `Ctrl-Ins` is copy
     -  `Shift-Ins` is paste
     -  `.` refers to the current working directory
+    -  `..` refers to the parent directory of whatever is the current working directory
     -  `cd` is change directory - when run without an argument it takes you to your home directory (`/home/tan` etc)
     -  `ls` is "list files" - I like `ls -al` which lists all files in a vertical list
     -  `ln -s` is "create symbolic link" - this command creates references between one folder/file location to another, and allows the system to treat the file as if it existed in the new location
+    -  `sudo` refers to "super user do" - it performs admin-level/permission commands
 
 - Set up a new non-root user
     -  `sudo adduser tan` add a new user named tan (also configure password)
