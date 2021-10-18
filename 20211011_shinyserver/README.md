@@ -63,7 +63,7 @@ The goal of this tutorial/office hours is to demonstrate following the basic ste
     apt install --no-install-recommends software-properties-common dirmngr
     wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
     add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
-    apt install --no-install-recommends r-base r-base-dev
+    apt install --no-install-recommends -y r-base r-base-dev
     ```
     - r-base-dev is important, don't skip it!
 - Install R packages
@@ -90,7 +90,7 @@ The goal of this tutorial/office hours is to demonstrate following the basic ste
 - Deploy app on server (w/ git + config management)
     - git clone the repo to your base folder and symlink into /srv/shiny-server 
 - Set up Nginx
-    - `sudo apt install nginx`
+    - `sudo apt install -y nginx`
     - Copied from Charles Bordet and Dean Attali's tutorial - the following goes in /etc/nginx/sites-available/shiny.conf
     ```
     server {
@@ -98,7 +98,7 @@ The goal of this tutorial/office hours is to demonstrate following the basic ste
     listen 80;
     listen [::]:80;
     # Replace it with your (sub)domain name.
-    server_name shiny.datachamp.fr;
+    server_name tan.fyi;
     # The reverse proxy, keep this unchanged:
     location / { # for the basic shiny server
         proxy_pass http://localhost:3838;
