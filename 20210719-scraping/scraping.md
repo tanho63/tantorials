@@ -13,19 +13,15 @@ B-->|Success| C[Yay! It's a static table.]
 
 B-->|Failure| D[Open network tab to inspect page URL's raw contents]
 
+A-->|No| F
+
 D-->|Found embedded JSON| E[Parse script tag with V8]
 
 D-->|Could not find embedded JSON| F[Ctrl-F5 and see if there are API requests]
 
-F-->|API request found!| G[API time.] --> J
+F-->|API request found!| G[API time.]
 
 F-->|Websocket request found!| H[Selenium time.]
-
-A-->|No| I[Look for API]
-
-I-->|API found| J[API]
-
-I-->|No API found| H[Selenium time]
 
 ```
 
