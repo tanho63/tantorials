@@ -25,3 +25,11 @@ F-->|No API request found and/or found a WebSocket request| H[Selenium time.]
 
 ```
 
+## Basic rvest
+
+## Embedded JSON with V8
+
+## APIs
+
+## Selenium
+
