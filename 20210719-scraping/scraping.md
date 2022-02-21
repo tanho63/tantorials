@@ -7,7 +7,7 @@ flowchart TD
 
 A[Can I access it in my browser \n without authentication? \n i.e. incognito mode]
 
-A-->|Yes| B[Try basic read_html]
+A-->|Yes| B[Try basic rvest read_html]
 
 B-->|Success| C([Yay! It's a static page])
 
