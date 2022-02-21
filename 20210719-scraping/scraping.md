@@ -25,6 +25,9 @@ F-->|No API request found and/or found a WebSocket request| H[Selenium time.]
 
 ```
 
+## Preface: Scraping ethics
+{insert discussion of ethics}
+
 ## Basic rvest
 
 ## Embedded JSON with V8
