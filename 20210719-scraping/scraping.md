@@ -1,28 +1,36 @@
-## Scraping with R
+## Web scraping with R
 
 A flowchart on getting data you want. 
 
 ```mermaid
 flowchart TD
 
-A[Can I access it in my browser without authentication?]
+A[Can I access it in my browser \n without authentication? \n i.e. incognito mode]
 
-A-->|Yes| B[Try rvest]
+A-->|Yes| B[Try basic read_html]
 
-B-->|Success| C[Yay! It's a static table.]
+B-->|Success| C([Yay! It's a static page])
 
-B-->|Failure| D[Open network tab to inspect page URL's raw contents]
+B-->|Failure| D[Open devtools / network tab \n to inspect page URL's raw contents]
 
+D-->|Found embedded JSON in main page body| E([Parse script tag with rvest + V8])
+
+D-->|Could not find embedded JSON| F[Force-refresh from devtools/network tab \n and see if there are API/XHR requests]
+
+F-->|API request found| G[API time - reproduce API call, \n with headers if necessary]
+
+F-->|No API request found and/or \n found a WebSocket request| H[Selenium time, imitate clicks]
+
+H-->|dump source to html| K
+
+G-->|HTML| K([Parse HTML with rvest's read_html etc])
+
+G-->|JSON| J([Parse JSON with jsonlite/parse_json etc])
+
+G-->|XML| L([Parse XML with rvest or xml2, and oof])
+
+G-->|other| M([Good luck!])
 A-->|No| F
-
-D-->|Found embedded JSON| E[Parse script tag with V8]
-
-D-->|Could not find embedded JSON| F[Ctrl-F5 and see if there are API requests]
-
-F-->|API request found!| G[API time.]
-
-F-->|No API request found and/or found a WebSocket request| H[Selenium time.]
-
 ```
 
 ## Preface: Scraping ethics
