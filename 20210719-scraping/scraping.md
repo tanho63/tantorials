@@ -30,7 +30,7 @@ F-->|No API request found and/or found a WebSocket request| H[Selenium time.]
 ## Embedded JSON with V8
 
 ```r
-  library(jsonlite)
+library(jsonlite)
 library(V8)
 library(rvest)
 library(tidyverse)
