@@ -21,7 +21,7 @@ D-->|Could not find embedded JSON| F[Ctrl-F5 and see if there are API requests]
 
 F-->|API request found!| G[API time.]
 
-F-->|No API request found (and/or found a WebSocket request)| H[Selenium time.]
+F-->|No API request found and/or found a WebSocket request| H[Selenium time.]
 
 ```
 
