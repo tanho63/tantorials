@@ -19,7 +19,7 @@ B-->|Failure| D[Inspect page URL's raw contents]
 
 D-->|Found embedded JSON \nin main page body| E([Parse script tag \n with rvest + V8])
 
-D-->|Could not find embedded JSON| F[Force-refresh \n while watching network tab \n to see if there are API/XHR/WebSocket requests]
+D-->|Could not find embedded JSON| F[Force-refresh \n while watching network tab \n looking for API/XHR/WebSocket calls]
 
 F-->|API/XHR request found| G[API time - reproduce API call,\n with headers if required]
 
@@ -74,6 +74,13 @@ G-->|other| M([Good luck!])
 > - I will consider public APIs to provide data as an alternative to scrapers.
 
 ## Basic rvest
+
+Video tutorial https://www.youtube.com/watch?v=z8yT3E4pz54
+
+Examples: 
+- https://github.com/tanho63/tantorials/blob/main/20210719-scraping/scraping-limpopo.R
+- https://github.com/tanho63/tantorials/blob/main/20210719-scraping/scraping-realgm.R
+- https://github.com/tanho63/tantorials/blob/main/20210719-scraping/scraping-gijoe.R
 
 ## Embedded JSON with V8
 
