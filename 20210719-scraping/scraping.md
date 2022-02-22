@@ -25,7 +25,7 @@ F-->|API/XHR request found| G[API time - reproduce API call,\n with headers if r
 
 F-->|No API request found \n and/or found a WebSocket request| H[Selenium time, imitate a browser]
 
-H-->|Dump source to html| K
+H-->|Dump source to HTML| K
 
 G-->|HTML| K([Parse HTML \n with rvest's read_html etc])
 
