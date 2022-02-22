@@ -5,7 +5,7 @@ A flowchart on getting data you want.
 ```mermaid
 flowchart TD
 
-1[Open devtools to the network tab]
+1([Open devtools to the network tab])
 
 1-->A
 
