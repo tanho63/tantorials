@@ -17,21 +17,21 @@ B-->|Success| C([Yay! It's a static page])
 
 B-->|Failure| D[Inspect page URL's raw contents]
 
-D-->|Found embedded JSON in main page body| E([Parse script tag with rvest + V8])
+D-->|Found embedded JSON \nin main page body| E([Parse script tag \n with rvest + V8])
 
 D-->|Could not find embedded JSON| F[Force-refresh \n while watching network tab \n to see if there are API/XHR/WebSocket requests]
 
 F-->|API/XHR request found| G[API time - reproduce API call,\n with headers if required]
 
-F-->|No API request found and/or found a WebSocket request| H[Selenium time, imitate a browser]
+F-->|No API request found \n and/or found a WebSocket request| H[Selenium time, imitate a browser]
 
 H-->|Dump source to html| K
 
-G-->|HTML| K([Parse HTML with rvest's read_html etc])
+G-->|HTML| K([Parse HTML \n with rvest's read_html etc])
 
-G-->|JSON| J([Parse JSON with jsonlite's parse_json etc])
+G-->|JSON| J([Parse JSON \n with jsonlite's parse_json etc])
 
-G-->|XML| L([Parse XML with rvest or xml2, and oof])
+G-->|XML| L([Parse XML \n with rvest or xml2,\n and oof])
 
 A-->|No| F
 
