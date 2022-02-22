@@ -5,32 +5,44 @@ A flowchart on getting data you want.
 ```mermaid
 flowchart TD
 
-A[Can I access it in my browser \n without authentication? \n i.e. incognito mode]
+1[Open devtools to the network tab]
+
+1-->A
+
+A[Can I access the page in my browser \n without authentication?\n i.e. incognito mode]
 
 A-->|Yes| B[Try basic rvest read_html]
 
 B-->|Success| C([Yay! It's a static page])
 
-B-->|Failure| D[Open devtools / network tab \n to inspect page URL's raw contents]
+B-->|Failure| D[Inspect page URL's raw contents]
 
 D-->|Found embedded JSON in main page body| E([Parse script tag with rvest + V8])
 
-D-->|Could not find embedded JSON| F[Force-refresh from devtools/network tab \n and see if there are API/XHR requests]
+D-->|Could not find embedded JSON| F[Force-refresh \n while watching network tab \n to see if there are API/XHR/WebSocket requests]
 
-F-->|API request found| G[API time - reproduce API call, \n with headers if necessary]
+F-->|API/XHR request found| G[API time - reproduce API call,\n with headers if required]
 
-F-->|No API request found and/or \n found a WebSocket request| H[Selenium time, imitate clicks]
+F-->|No API request found and/or found a WebSocket request| H[Selenium time, imitate a browser]
 
-H-->|dump source to html| K
+H-->|Dump source to html| K
 
 G-->|HTML| K([Parse HTML with rvest's read_html etc])
 
-G-->|JSON| J([Parse JSON with jsonlite/parse_json etc])
+G-->|JSON| J([Parse JSON with jsonlite's parse_json etc])
 
 G-->|XML| L([Parse XML with rvest or xml2, and oof])
 
-G-->|other| M([Good luck!])
 A-->|No| F
+
+N([Wrap code into function to iterate over URL/arguments])
+
+C --> N
+E --> N
+K--> N
+J --> N
+L --> N
+G-->|other| M([Good luck!])
 ```
 
 ## Preface: Scraping ethics
