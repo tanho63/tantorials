@@ -19,9 +19,13 @@ B-->|Failure| D[Inspect page URL's raw contents]
 
 D-->|Found embedded JSON \nin main page body| E([Parse script tag \n with rvest + V8])
 
-D-->|Could not find embedded JSON| F[Force-refresh \n while watching network tab \n looking for API/XHR/WebSocket calls]
+D-->|Could not find embedded JSON| F[Force-refresh \n while watching network tab]
 
-F-->|API/XHR request found| G[API time - reproduce API call,\n with headers if required]
+F-->|Found main page cookies and headers| P[Reproduce request \n with cookies and headers]
+
+P--> K
+
+F-->|API/XHR request found| G[Reproduce API call,\n with headers if required]
 
 F-->|No API request found \n and/or found a WebSocket request| H[Selenium time, imitate a browser]
 
