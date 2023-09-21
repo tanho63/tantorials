@@ -12,7 +12,7 @@ The goal of this tutorial/office hours is to demonstrate following the basic ste
     - Knowing how to set your own server up is an important step in your growth as a shiny developer!
 - Common cloud providers are AWS, Google Cloud Platform, Azure, DigitalOcean, and Linode. The big three (AWS/GCP/Azure) have nice free tiers you should look at to get started with.
 - Also consider signing up for [GitHub Student Dev](https://education.github.com/pack?sort=popularity&tag=All) program if you are eligible
-- Choice of Linux distro: I just recommend using Ubuntu 20.04 - that's the long-term stable release and ***by far*** the most common distribution, which means it'll be the easiest to get help online with. The performance gains between OSes are marginal compared to just buying more resources for your VM. You may want to upgrade to a newer Ubuntu eventually but it's a bunch of (relatively unnecessary) work. 
+- Choice of Linux distro: I just recommend using Ubuntu 22.04 - that's the long-term stable release and ***by far*** the most common distribution, which means it'll be the easiest to get help online with. The performance gains between OSes are marginal compared to just buying more resources for your VM. You may want to upgrade to a newer Ubuntu eventually but it's a bunch of (relatively unnecessary) work. 
 
 ### Coding Outline and Notes
 - Pick an app or two to put onto this server
