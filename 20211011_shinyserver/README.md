@@ -154,6 +154,5 @@ Docker (so much! next step up from the bare bones tutorial)
 
 More examples of devops stacks
 - Daniel Chen - https://github.com/chendaniely/odsc-east-2020-plumber_docker
-- "" - https://github.com/bi-sdal/shy-mro-c7sd_auth/tree/master
 
 Nginx playground - Julia Evans - https://jvns.ca/blog/2021/09/24/new-tool--an-nginx-playground/
