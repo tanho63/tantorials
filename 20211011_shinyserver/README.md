@@ -21,7 +21,7 @@ The goal of this tutorial/office hours is to demonstrate following the basic ste
     - https://tan.fyi
 - Set up AWS account (because free tier is nice)
 - Pick out a new VM and use it
-    - AWS t2.micro with Ubuntu 20.04 (free tier + current long-term-stable Ubuntu version) 
+    - AWS t2.micro with Ubuntu 22.04 (free tier + current long-term-stable Ubuntu version) 
     - In general I just recommend using Ubuntu everywhere, there are reasons to choose other ones but they're mostly irrelevant to new devops people
 - Set up SSH + key/pair, AWS firewall
     - On Windows, this involves configuring Putty
@@ -77,7 +77,7 @@ The goal of this tutorial/office hours is to demonstrate following the basic ste
     # in R console
     install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
     # use RSPM - I forgot to and I think this will make it go faster
-    options(repos = c("CRAN" = "https://packagemanager.rstudio.com/all/__linux__/focal/latest"))
+    options(repos = c("CRAN" = "https://packagemanager.rstudio.com/all/__linux__/jammy/latest"))
     pkgs <- c("shiny","dplyr","tidyr","rmarkdown","shinyWidgets")
     lapply(pkgs, function(pkg) {
       pak::pkg_system_requirements(pkg, execute = TRUE)
