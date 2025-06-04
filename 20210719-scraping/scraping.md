@@ -9,7 +9,7 @@ flowchart TD
 
 1-->A
 
-A[Can I access the page in my browser \n without authentication?\n i.e. incognito mode]
+A[Can I access the page in my browser without authentication? i.e. incognito mode]
 
 A-->|Yes| B[Try basic rvest read_html]
 
@@ -17,25 +17,25 @@ B-->|Success| C([Yay! It's a static page])
 
 B-->|Failure| D[Inspect page URL's raw contents]
 
-D-->|Found embedded JSON \nin main page body| E([Parse script tag \n with rvest + V8])
+D-->|Found embedded JSON in main page body| E([Parse script tag with rvest + V8])
 
-D-->|Could not find embedded JSON| F[Force-refresh \n while watching network tab]
+D-->|Could not find embedded JSON| F[Force-refresh while watching network tab]
 
-F-->|Found main page cookies and headers| P[Reproduce request \n with cookies and headers]
+F-->|Found main page cookies and headers| P[Reproduce request with cookies and headers]
 
 P--> K
 
-F-->|API/XHR request found| G[Reproduce API call,\n with headers if required]
+F-->|API/XHR request found| G[Reproduce API call, with headers if required]
 
-F-->|No API request found \n and/or found a WebSocket request| H[Selenium time, imitate a browser]
+F-->|No API request found and/or found a WebSocket request| H[Selenium time, imitate a browser]
 
 H-->|Dump source to HTML| K
 
-G-->|HTML| K([Parse HTML \n with rvest's read_html etc])
+G-->|HTML| K([Parse HTML with rvest's read_html etc])
 
-G-->|JSON| J([Parse JSON \n with jsonlite's parse_json etc])
+G-->|JSON| J([Parse JSON with jsonlite's parse_json etc])
 
-G-->|XML| L([Parse XML \n with rvest or xml2,\n and oof])
+G-->|XML| L([Parse XML with rvest or xml2, and oof])
 
 A-->|No| F
 
@@ -97,11 +97,11 @@ library(tidyverse)
 page_html <- rvest::read_html("http://www4.vestibular.ufjf.br/2021/notaspism1/H.html")
 
 script_tags <- page_html |> 
-  html_elements("script") |> 
-  html_text2() |> 
-  str_subset("testdata") |> 
-  str_replace_all("\\r","") |> 
-  str_replace_all(".+ var (testdata .*)","\\1")
+ html_elements("script") |> 
+ html_text2() |> 
+ str_subset("testdata") |> 
+ str_replace_all("\\r","") |> 
+ str_replace_all(".+ var (testdata .*)","\\1")
 
 js <- V8::v8()
 
@@ -110,7 +110,7 @@ js$eval(script_tags)
 testdata <- js$get("testdata") 
 
 data_test <- testdata$data |> 
-  unnest(modulosPISM)
+ unnest(modulosPISM)
 ```
  
 https://twitter.com/_TanHo/status/1484529037460520965?s=20&t=v9KXTxfR4g-6BFU6-pHmQw
